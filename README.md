@@ -4,16 +4,6 @@
 
 *Note: A detailed complementary paper is currently under review and will be linked here soon.*
 
-`hdImpute` includes four core functions. The first three are to proceed by individual stages ((1) build the correlation matrix, (2) flatten and rank the matrix to give a ranked feature list, and (3) build batches, impute, and join). The fourth function below (`hdImpute()`) is meant to run all stages simultaneously, which is slightly less flexible, but much simpler. 
-
-  1. `feature_cor()`: creates the correlation matrix
-  
-  2. `flatten_mat()`: flattens the correlation matrix from the previous stage, and ranks the features based on absolutely correlations. Thus, the input for `flatten_mat()` should be the stored output from `feature_cor()`.
-  
-  3. `impute_batches()`: creates batches based on the feature rankings from `flatten_mat()`, and then imputes missing values for each batch, until all batches are completed. Then, joins the batches to give a completed, imputed data set. 
-
-  4. `hdImpute()`: does everything for you. At a minimum, pass the raw data object (`data`) along with specifying the batch size (`batch`) to `hdImpute()` to return a complete, imputed data set (same as you'd get from the individual stages in the above three functions).
-
 ## Usage
 
 Dev version:
@@ -29,6 +19,16 @@ Stable (CRAN) version:
 install.packages("hdImpute")
 library(hdImpute)
 ```
+
+`hdImpute` includes four core functions. The first three are to proceed by individual stages ((1) build the correlation matrix, (2) flatten and rank the matrix to give a ranked feature list, and (3) build batches, impute, and join). The fourth function below (`hdImpute()`) is meant to run all stages simultaneously, which is slightly less flexible, but much simpler. 
+
+  1. `feature_cor()`: creates the correlation matrix
+  
+  2. `flatten_mat()`: flattens the correlation matrix from the previous stage, and ranks the features based on absolutely correlations. Thus, the input for `flatten_mat()` should be the stored output from `feature_cor()`.
+  
+  3. `impute_batches()`: creates batches based on the feature rankings from `flatten_mat()`, and then imputes missing values for each batch, until all batches are completed. Then, joins the batches to give a completed, imputed data set. 
+
+  4. `hdImpute()`: does everything for you. At a minimum, pass the raw data object (`data`) along with specifying the batch size (`batch`) to `hdImpute()` to return a complete, imputed data set (same as you'd get from the individual stages in the above three functions).
 
 For a complete demonstration of the package, take a look at the [vignette](https://github.com/pdwaggoner/hdImpute/tree/main/vignettes). 
 
