@@ -18,7 +18,7 @@ For a demonstration of the package, take a look at the vignette.
 
 ## Contribute
 
-This software is in its infancy, though a first version (0.1.0) is on CRAN. As such, wide engagement with it and collaboration is welcomed! Before collaborating, please take a look at and abide by the contributorcode of conduct. 
+This software is in its infancy, though a first version (0.1.0) is on CRAN. As such, wide engagement with it and collaboration is welcomed! Before collaborating, please take a look at and abide by the [contributor code of conduct](https://github.com/pdwaggoner/hdImpute/blob/main/CODE_OF_CONDUCT.md). 
 
   - Feel free to submit an [issue](https://github.com/pdwaggoner/hdImpute/issues) reporting a bug, requesting a feature enhancement, etc. 
 
