@@ -42,4 +42,4 @@ This software is in its infancy, though a first version (0.1.0) is on CRAN. As s
 
   - [Reach out directly](https://pdwaggoner.github.io/) with ideas if you're uneasy with public interaction
 
-Thanks for using the tool; I hope its useful.
+Thanks for using the tool. I hope its useful.
