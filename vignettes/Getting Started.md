@@ -15,7 +15,7 @@ The first approach offers users a bit more flexibility in preprocessing and in t
 
 For the stage-based approach, there are three core functions users must use: 
 
-  1. `feature_cor()`: creates the correlation matrix. *Note*: Dependent on the size and dimensionality of the data as well as the speed of the machine, this preprocessing step could take some time. For example, in an earlier testing run, a simulated data frame of size 20000 $\times$ 3000 had a runtime of roughly 4.25 hours, while a smaller data frame of size 2519 $\times$ 1558 had a runtime of roughly 1 minute on an AWS EC2 instance with 32 cores. 
+  1. `feature_cor()`: creates the correlation matrix. *Note*: Dependent on the size and dimensionality of the data as well as the speed of the machine, this preprocessing step could take some time. For example, in an earlier testing run, a simulated data frame of size 20000 x 3000 had a runtime of roughly 4.25 hours, while a smaller data frame of size 2519 x 1558 had a runtime of roughly 1 minute on an AWS EC2 instance with 32 cores. 
   
   2. `flatten_mat()`: flattens the correlation matrix from the previous stage, and ranks the features based on absolutely correlations. Thus, the input for `flatten_mat()` should be the stored output from `feature_cor()`.
   
