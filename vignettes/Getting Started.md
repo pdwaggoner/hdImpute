@@ -50,7 +50,7 @@ data <- missForest::prodNA(d, noNA = 0.30) %>%
 
 *Note*: This is a tiny sample set, but hopefully the usage is clear enough. 
 
-Next, follow each stage mentioned above, starting with building the correlation matrix. Of note, `feature_cor()` as an additional argument `return_cor`, which is logical. The default is `FALSE`, but if `TRUE`, the output is stored as normal, and the correlation matrix is printed in the console. For illustrative purposes, I set `return_cor = TRUE`.
+Next, follow each stage mentioned above, starting with building the correlation matrix. Of note, `feature_cor()` has an additional argument `return_cor`, which is logical. The default is `FALSE`, but if `TRUE`, the output is stored as normal, and the correlation matrix is printed in the console. For illustrative purposes, I set `return_cor = TRUE`.
 
 ```{r}
 all_cor <- feature_cor(data,
