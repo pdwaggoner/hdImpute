@@ -1,5 +1,5 @@
 #' High dimensional imputation via batch processed chained random forests
-#'
+
 #' Build correlation matrix
 #'
 #' @usage feature_cor(data, return_cor)
@@ -149,7 +149,7 @@ impute_batches <- function(data,
   time_imp <- system.time(
     {
 
-      set.seed(123)
+      set.seed(seed)
 
       suppressWarnings(
         imputed_batches <- lapply(batches,
@@ -276,7 +276,7 @@ hdImpute <- function(data,
 
 # Step 3
   {
-    set.seed(123)
+    set.seed(seed)
 
     suppressWarnings(
       imputed_batches <- lapply(batches,
@@ -292,7 +292,7 @@ hdImpute <- function(data,
     saveRDS(imputed_batches, file = "imputed_batches.rds")
   }
 
-# Step 4 (note: put cols from imputed obj back into same order as original data obj)
+# Step 4
   imputed <- dplyr::bind_cols(imputed_batches, .id = "row_label") %>%
     dplyr::select(-.id)
 

@@ -2,7 +2,8 @@
 % Please edit documentation in R/hdImpute.R
 \name{feature_cor}
 \alias{feature_cor}
-\title{High dimensional imputation via batch processed chained random forests}
+\title{High dimensional imputation via batch processed chained random forests
+Build correlation matrix}
 \usage{
 feature_cor(data, return_cor)
 }
@@ -15,6 +16,7 @@ feature_cor(data, return_cor)
 A cross-feature correlation matrix
 }
 \description{
+High dimensional imputation via batch processed chained random forests
 Build correlation matrix
 }
 \examples{

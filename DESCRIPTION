@@ -7,6 +7,9 @@ Authors@R: person("Philip", "Waggoner", role = c("aut", "cre"), email = "philip.
 Maintainer: Philip Waggoner <philip.waggoner@gmail.com>
 Description: A correlation-based batch process for fast imputation for 
     high dimensional missing data problems via chained random forests.
+    See Stekhoven and Bühlmann (2012) <doi:10.1093/bioinformatics/btr597> 
+    for more on missForest, and Mayer (2022) 
+    <https://github.com/mayer79/missRanger> for more on missRanger.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
