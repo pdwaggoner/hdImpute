@@ -24,7 +24,7 @@ library(hdImpute)
 
   1. `feature_cor()`: creates the correlation matrix
   
-  2. `flatten_mat()`: flattens the correlation matrix from the previous stage, and ranks the features based on absolutely correlations. Thus, the input for `flatten_mat()` should be the stored output from `feature_cor()`.
+  2. `flatten_mat()`: flattens the correlation matrix from the previous stage, and ranks the features based on absolute correlations. Thus, the input for `flatten_mat()` should be the stored output from `feature_cor()`.
   
   3. `impute_batches()`: creates batches based on the feature rankings from `flatten_mat()`, and then imputes missing values for each batch, until all batches are completed. Then, joins the batches to give a completed, imputed data set. 
 
