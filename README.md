@@ -34,7 +34,7 @@ For a complete demonstration of the package, take a look at the [vignette](https
 
 ## Contribute
 
-This software is in its infancy, though a first version (0.1.0) is on CRAN. As such, wide engagement with it and collaboration is welcomed! Before collaborating, please take a look at and abide by the [contributor code of conduct](https://github.com/pdwaggoner/hdImpute/blob/main/CODE_OF_CONDUCT.md). Here's a sampling of how to contribute:
+This software is in its infancy, though a first version (0.1.0) is on [CRAN](https://cran.r-project.org/package=hdImpute). As such, wide engagement with it and collaboration is welcomed! Before collaborating, please take a look at and abide by the [contributor code of conduct](https://github.com/pdwaggoner/hdImpute/blob/main/CODE_OF_CONDUCT.md). Here's a sampling of how to contribute:
 
   - Submit an [issue](https://github.com/pdwaggoner/hdImpute/issues) reporting a bug, requesting a feature enhancement, etc. 
 
