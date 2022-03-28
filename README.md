@@ -1,5 +1,6 @@
 # `hdImpute`: Batched high dimensional imputation
 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/hdImpute)](http://cran.r-project.org/package=hdImpute)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/hdImpute)](http://www.r-pkg.org/pkg/hdImpute)
 
