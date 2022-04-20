@@ -37,6 +37,8 @@ feature_cor <- function(data,
   u[is.na(u)] <- 0
   max_cor <- pmax(v, u)
 
+  cli::cli_alert_success("Correlation matrix built")
+
   if(return_cor == TRUE){
     print(max_cor)
   } else max_cor
@@ -78,6 +80,8 @@ flatten_mat <- function(cor_mat,
   df_y <- all_cor_mat %>%
     dplyr::select(column) %>%
     dplyr::rename(col = column)
+
+  cli::cli_alert_success("Flattened and ranked")
 
   # create new df, ordered by correlation
   ranked <- dplyr::bind_rows(
@@ -167,7 +171,8 @@ impute_batches <- function(data,
     saveRDS(imputed_batches, file = "imputed_batches.rds")
   }
 
-  # Step 4 (note: put cols from imputed obj back into same order as original data obj)
+  cli::cli_alert_success("Imputed and joined")
+
   imputed <- dplyr::bind_cols(imputed_batches, .id = "row_label") %>%
     dplyr::select(-.id)
 
@@ -203,12 +208,13 @@ hdImpute <- function(data,
                      seed = 123,
                      save = FALSE) {
 
+  cli::cli_h1("Initializing hdImpute process.")
+
   if(!is.data.frame(data) && !tibble::is_tibble(data) && !is.atomic(data)) {
     stop('x must be atomic, data frame or tibble\n',
          '  You have provided an object of class: ', class(data)[1])
   }
 
-  cli::cli_h1("Step 1: Correlation matrix")
   nvar <- ncol(data)
   data_matrix <- matrix(0,
                         nrow = nvar,
@@ -225,10 +231,11 @@ hdImpute <- function(data,
                                        method = "pearson")))
   u[is.na(u)] <- 0
   max_cor <- pmax(v, u)
-  cli::cli_progress_step("Correlation matrix built")
 
-# flatten and rank matrix
-  cli::cli_h1("Step 2: Flatten matrix & Rank features")
+  cli::cli_alert_success("Correlation matrix built")
+
+  # flatten and rank matrix
+
   ut <- upper.tri(max_cor)
 
   all_cor_mat <- tibble::tibble(
@@ -238,7 +245,7 @@ hdImpute <- function(data,
   ) %>%
     dplyr::arrange(plyr::desc(cor))
 
-# interweave cols for batch creation
+  # interweave cols for batch creation
   df_x <- all_cor_mat %>%
     dplyr::select(row) %>%
     dplyr::rename(col = row)
@@ -247,25 +254,24 @@ hdImpute <- function(data,
     dplyr::select(column) %>%
     dplyr::rename(col = column)
 
-# create new df, ordered by correlation
+  # create new df, ordered by correlation
   ranked <- dplyr::bind_rows(
     df_x, df_y
   ) %>%
     dplyr::distinct(col)
-  cli::cli_progress_step("Flattened and ranked")
 
-# impute batches
+  cli::cli_alert_success("Flattened and ranked")
+
+  # impute batches
   if (!is.null(seed)) {
     set.seed(seed)
   }
 
-  cli::cli_h1("Step 3: Impute batches and join")
-
-# Step 1
+  # Step 1
   splits <- ranked %>%
     dplyr::group_split(batch = (dplyr::row_number() %/% batch) + 1)
 
-# Step 2
+  # Step 2
   batches <- list()
 
   batches <- purrr::map(
@@ -277,10 +283,10 @@ hdImpute <- function(data,
       )
       data %>%
         dplyr::select(tidyselect::all_of(split$col))
-  }
+    }
   )
 
-# Step 3
+  # Step 3
   {
     set.seed(seed)
 
@@ -292,21 +298,22 @@ hdImpute <- function(data,
                                 num.trees = n_trees,
                                 seed = seed)
     )
-    }
+
+  }
+
+  cli::cli_alert_success("Imputed and joined")
 
   if(save == TRUE){
     saveRDS(imputed_batches, file = "imputed_batches.rds")
   }
 
-# Step 4
+  cli::cli_h3("hdImpute process successfully completed.")
+
+  # Step 4
   imputed <- dplyr::bind_cols(imputed_batches, .id = "row_label") %>%
     dplyr::select(-.id)
 
   imputed <- imputed[names(data)]
-
-  cli::cli_progress_step("Imputed and joined")
-
-  cli::cli_alert_info("The hdImpute process has successfully completed.")
 
   imputed
 }
