@@ -1,7 +1,7 @@
 Package: hdImpute
 Type: Package
 Title: A Batch Process for High Dimensional Imputation
-Version: 0.1.0
+Version: 0.1.1
 BugReports: https://github.com/pdwaggoner/hdImpute/issues
 Authors@R: person("Philip", "Waggoner", role = c("aut", "cre"), email = "philip.waggoner@gmail.com")
 Maintainer: Philip Waggoner <philip.waggoner@gmail.com>
@@ -23,7 +23,8 @@ Imports:
     tidyselect,
     missForest,
     tidyverse,
-    usethis
+    usethis,
+    cli
 Suggests: 
     testthat (>= 3.0.0),
     knitr,

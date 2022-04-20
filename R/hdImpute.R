@@ -208,6 +208,7 @@ hdImpute <- function(data,
          '  You have provided an object of class: ', class(data)[1])
   }
 
+  cli::cli_h1("Step 1: Correlation matrix")
   nvar <- ncol(data)
   data_matrix <- matrix(0,
                         nrow = nvar,
@@ -224,8 +225,10 @@ hdImpute <- function(data,
                                        method = "pearson")))
   u[is.na(u)] <- 0
   max_cor <- pmax(v, u)
+  cli::cli_progress_step("Correlation matrix built")
 
 # flatten and rank matrix
+  cli::cli_h1("Step 2: Flatten matrix & Rank features")
   ut <- upper.tri(max_cor)
 
   all_cor_mat <- tibble::tibble(
@@ -249,11 +252,14 @@ hdImpute <- function(data,
     df_x, df_y
   ) %>%
     dplyr::distinct(col)
+  cli::cli_progress_step("Flattened and ranked")
 
 # impute batches
   if (!is.null(seed)) {
     set.seed(seed)
   }
+
+  cli::cli_h1("Step 3: Impute batches and join")
 
 # Step 1
   splits <- ranked %>%
@@ -297,6 +303,10 @@ hdImpute <- function(data,
     dplyr::select(-.id)
 
   imputed <- imputed[names(data)]
+
+  cli::cli_progress_step("Imputed and joined")
+
+  cli::cli_alert_info("The hdImpute process has successfully completed.")
 
   imputed
 }
