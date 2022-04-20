@@ -21,14 +21,14 @@ Imports:
     tibble, 
     dplyr, 
     tidyselect,
-    missForest,
-    tidyverse,
-    usethis,
     cli
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    usethis,
+    missForest,
+    tidyverse
 VignetteBuilder: knitr
 RoxygenNote: 7.1.2
 Config/testthat/edition: 3
