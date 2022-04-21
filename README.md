@@ -42,7 +42,7 @@ This software is in its infancy, though an early version (v0.1.1) is on [CRAN](h
 
   - Submit an [issue](https://github.com/pdwaggoner/hdImpute/issues) reporting a bug, requesting a feature enhancement, etc. 
 
-  - Suggest changes directly via a [pull request](https://github.com/pdwaggoner/hdImpute/pulls)
+  - Suggest changes directly via [pull request](https://github.com/pdwaggoner/hdImpute/pulls)
 
   - [Reach out directly](https://pdwaggoner.github.io/) with ideas if you're uneasy with public interaction
 
