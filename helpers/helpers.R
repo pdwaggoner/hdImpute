@@ -1,15 +1,5 @@
 # placeholder for basic helper funs
 
-#' basic cleaning operations for indiv (non-survey-11) datasets
-#' @param x raw `.csv`
-basic_cleaning <- function(x) {
-x <- x %>%
-  filter(surveys_last_round == 11) %>% 
-  mutate(across(everything(), ~na_if(., -1))) %>% 
-  select(-c(surveys_last_round, starts_with("timestamp_GV_"))) %>% 
-  relocate(person_id)
-}
-
 #' NA check 1
 #' @param data a data frame/tibble
 na_check <- function(data){
