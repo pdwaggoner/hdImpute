@@ -9,7 +9,7 @@
 
 See the R-Bloggers post covering `hdImpute` [here](https://www.r-bloggers.com/2022/03/batched-imputation-for-high-dimensional-missing-data-problems/).
 
-*Note: A detailed complementary paper is currently under review and will be linked here soon.*
+See the detailed complementary paper introducing the method with several experiemental results [here](pdwaggoner.github.io/resfiles/hdimpute_paper.pdf){:target="_blank"}
 
 ## Access
 
