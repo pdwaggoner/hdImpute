@@ -9,7 +9,7 @@
 
 See the R-Bloggers post overviewing a basic implementation of `hdImpute` in R [here](https://www.r-bloggers.com/2022/03/batched-imputation-for-high-dimensional-missing-data-problems/)
 
-See the detailed complementary paper (*Computational Statistics*, 2023) introducing `hdImpute` along with several experiemental results [here](https://link.springer.com/article/10.1007/s00180-023-01325-9) (journal site) or [here](./resfiles/hdimpute_paper.pdf) (full paper)
+See the detailed complementary paper (*Computational Statistics*, 2023) introducing `hdImpute` along with several experimental results [here](https://link.springer.com/article/10.1007/s00180-023-01325-9) (journal site) or [here](./resfiles/hdimpute_paper.pdf) (full paper)
 
 ## Access
 
