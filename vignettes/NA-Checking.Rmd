@@ -1,0 +1,137 @@
+---
+title: "NA Checking"
+author: "Philip Waggoner"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{NA Checking}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+options(rmarkdown.html_vignette.check_title = FALSE)
+```
+
+
+## Introductory Remarks 
+
+A common part of any missing data / imputation project is checking for missingness. This is often done prior to modeling, during fitting in some cases, and after imputation to ensure missingness is sufficiently addressed. In many cases, missingness can look like it's dealt with form one view, but still be present from another. Regardless of why, there exists the need for constantly checking for missingness, and where it exists in the data throughout the process. 
+
+The latest release of `hdImpute` includes two helper functions to check for missingness ("NA") at the column and row levels. The functions are: 
+
+  - `check_feature_na()`: find features with (specified amount of) missingness
+  - `check_row_na()`: find number of and which rows contain any missingness
+
+## Overview of the Functions
+
+These helpers aren't complex in architecture. But rather, they are intended to provide the practical information needed to assess missingness. That is, rather than add up all missing cases, or find the mean missingness in a column (both of which are still helpful), these helpers are intended to help the user find and assess by returning the amount of missingness and also where it exists in the data. 
+
+The first column-wise function, `check_feature_na()`, takes two inputs: `data` and `threshold`. The `data` is simply the dataframe under consideration (the "original" data). The `threshold` is the level of missingness in a given column/feature as a proportion bounded between 0 and 1. Default set to sensitive level at 1e-04. That is, how much missingness do you want to locate in a given column? Return the column name and the rate of missingness for the column, for all columns that are at the supplied `threshold` or greater. 
+
+The second row-wise function, `check_row_na()`, is similar in scope but focuses at the case / observation level. This function also takes two inputs: `data` and `which`. As before, `data` is the raw, original data with missingness. `which` is optional, and logical. Its default is set to `FALSE`. But if `TRUE`, `check_row_na()` then returns a list with the row numbers (indices) corresponding to each row with missingness. So, if `which = FALSE` (the default), then the return is simply the number of rows in `data` with any missingness. But if `which = TRUE`, then the return is a tibble containing the number of rows in `data` with any missingness, *and* a list of which rows/row numbers contain missingness. 
+
+## A Few Examples
+
+First, load the library along with the `tidyverse` library for some additional helpers in setting up the sample data space. 
+
+```{r setup}
+library(hdImpute)
+library(tidyverse)
+```
+
+Next, set up the data and introduce missingness completely at random (MCAR) via the `prodNA()` function from the `missForest` package. Take a look at the synthetic data with missingness introduced.
+
+```{r data}
+d <- data.frame(X1 = c(1:6), 
+                X2 = c(rep("A", 3), 
+                       rep("B", 3)), 
+                X3 = c(3:8),
+                X4 = c(5:10),
+                X5 = c(rep("A", 3), 
+                       rep("B", 3)), 
+                X6 = c(6,3,9,4,4,6))
+
+set.seed(1234)
+
+data <- missForest::prodNA(d, noNA = 0.30) %>% 
+  as_tibble()
+
+data
+```
+
+*Note*: This is a tiny sample set, but hopefully the usage is clear enough. 
+
+### `check_feature_na()`
+
+First, let's take a look at a few variations of the column-wise checks. The default behavior is with `threshold = 1e-04`, functionally asking to return a column with even a tiny amount of missingness (0.0001): 
+
+```{r col1}
+check_feature_na(data = data)
+```
+
+Now, consider an adjustment to the missingness threshold, setting `threshold = 0.5` (or 50%), which is a much less sensitive check:
+
+```{r col2}
+check_feature_na(data = data,
+         threshold = 0.5)
+```
+
+And finally, let's verify our check is working properly by looking at the original data with *no* missingness. This should return 0 columns, as we set up the original data (`d`) to be complete:
+
+```{r col3}
+check_feature_na(d)
+```
+
+All looks as it should.
+
+### `check_row_na()`
+
+Now, let's take a look at row-wise missingness checks. 
+
+First, how many rows have missingness of any amount? (the default behavior)
+
+```{r row1}
+check_row_na(data)
+```
+
+Next, how many rows have missingness of any amount *and* which rows are they?
+
+```{r row2}
+check_row_na(data, which = TRUE)
+```
+
+There's the list, but what are the indices? We need to `unnest()` the list to see: 
+
+```{r row3}
+check_row_na(data, which = TRUE)[2] %>%
+  unnest(cols = c(which_rows))
+```
+
+And finally, as before, what about the original data with no missingness? (should be 0)
+
+```{r row4}
+check_row_na(d)
+```
+
+Hopefully the value of these simple helpers is clear, allowing for iterative NA checking throughout the imputation process. 
+
+## Concluding Remarks 
+
+This software is being actively developed, with many more features to come. Wide engagement with it and collaboration is welcomed! Here's a sampling of how to contribute:
+
+  - Submit an [issue](https://github.com/pdwaggoner/hdImpute/issues) reporting a bug, requesting a feature enhancement, etc. 
+
+  - Suggest changes directly via a [pull request](https://github.com/pdwaggoner/hdImpute/pulls)
+
+  - [Reach out directly](https://pdwaggoner.github.io/) with ideas if you're uneasy with public interaction
+
+Thanks for using the tool. I hope its useful.

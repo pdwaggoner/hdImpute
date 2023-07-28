@@ -8,7 +8,7 @@ Build correlation matrix}
 feature_cor(data, return_cor)
 }
 \arguments{
-\item{data}{A data object.}
+\item{data}{A data frame or tibble.}
 
 \item{return_cor}{Logical. Should the correlation matrix be printed? Default set to FALSE.}
 }
@@ -25,5 +25,7 @@ feature_cor(data = data, return_cor = FALSE)
 }
 }
 \references{
+Waggoner, P. D. (2023). A batch process for high dimensional imputation. Computational Statistics, 1-22. doi: <10.1007/s00180-023-01325-9>
+
 van Buuren S, Groothuis-Oudshoorn K (2011). "mice: Multivariate Imputation by Chained Equations in R." Journal of Statistical Software, 45(3), 1-67. doi: <10.18637/jss.v045.i03>
 }

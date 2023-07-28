@@ -1,3 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("stats", "cor")
 importFrom("magrittr", "%>%")
+importFrom("stats", "complete.cases", "var")

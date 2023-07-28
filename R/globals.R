@@ -1,1 +1,1 @@
-utils::globalVariables(c(".id", "column"))
+utils::globalVariables(c(".id", "column", ".", "n"))

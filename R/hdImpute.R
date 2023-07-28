@@ -3,8 +3,9 @@
 #' Build correlation matrix
 #'
 #' @usage feature_cor(data, return_cor)
-#' @param data A data object.
+#' @param data A data frame or tibble.
 #' @param return_cor Logical. Should the correlation matrix be printed? Default set to FALSE.
+#' @references Waggoner, P. D. (2023). A batch process for high dimensional imputation. Computational Statistics, 1-22. doi: <10.1007/s00180-023-01325-9>
 #' @references van Buuren S, Groothuis-Oudshoorn K (2011). "mice: Multivariate Imputation by Chained Equations in R." Journal of Statistical Software, 45(3), 1-67. doi: <10.18637/jss.v045.i03>
 #' @return A cross-feature correlation matrix
 #' @export
@@ -95,7 +96,7 @@ flatten_mat <- function(cor_mat,
 #' Impute batches and return completed data frame
 #'
 #' @usage impute_batches(data, features, batch, pmm_k, n_trees, seed, save)
-#' @param data Original data frame (with missing values)
+#' @param data Original data frame or tibble (with missing values)
 #' @param features Correlation-based vector of ranked features output from running \code{flatten_mat()}
 #' @param batch Numeric. Batch size.
 #' @param pmm_k Integer. Number of neighbors considered in imputation. Default at 5.
@@ -103,7 +104,8 @@ flatten_mat <- function(cor_mat,
 #' @param seed Integer. Seed to be set for reproducibility.
 #' @param save Should the list of individual imputed batches be saved as .rds file to working directory? Default set to FALSE.
 #' @details Step 1. group data by dividing the \code{row_number()} by batch size (\code{batch}, number of batches set by user) using integer division. Step 2. pass through \code{group_split()} to return a list. Step 3. impute each batch individually and time. Step 4. generate completed (unlisted/joined) imputed data frame
-#' @references Stekhoven, D. J., & Bühlmann, P. (2012). MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics, 28(1), 112-118.
+#' @references Waggoner, P. D. (2023). A batch process for high dimensional imputation. Computational Statistics, 1-22. doi: <10.1007/s00180-023-01325-9>
+#' @references Stekhoven, D. J., & Bühlmann, P. (2012). MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics, 28(1), 112-118. doi: <10.1093/bioinformatics/btr597>
 #' @return A completed, imputed data set
 #' @export
 #' @importFrom magrittr %>%
@@ -184,14 +186,15 @@ impute_batches <- function(data,
 #' Complete hdImpute process: correlation matrix, flatten, rank, create batches, impute, join
 #'
 #' @usage hdImpute(data, batch, pmm_k, n_trees, seed, save)
-#' @param data Original data frame (with missing values)
+#' @param data Original data frame or tibble (with missing values)
 #' @param batch Numeric. Batch size.
 #' @param pmm_k Integer. Number of neighbors considered in imputation. Default set at 5.
 #' @param n_trees Integer. Number of trees used in imputation. Default set at 15.
 #' @param seed Integer. Seed to be set for reproducibility.
 #' @param save Should the list of individual imputed batches be saved as .rds file to working directory? Default set to FALSE.
 #' @details Step 1. group data by dividing the \code{row_number()} by batch size (\code{batch}, number of batches set by user) using integer division. Step 2. pass through \code{group_split()} to return a list. Step 3. impute each batch individually and time. Step 4. generate completed (unlisted/joined) imputed data frame
-#' @references Stekhoven, D. J., & Bühlmann, P. (2012). MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics, 28(1), 112-118.
+#' @references Waggoner, P. D. (2023). A batch process for high dimensional imputation. Computational Statistics, 1-22. doi: <10.1007/s00180-023-01325-9>
+#' @references Stekhoven, D. J., & Bühlmann, P. (2012). MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics, 28(1), 112-118. doi: <10.1093/bioinformatics/btr597>
 #' @return A completed, imputed data set
 #' @export
 #' @importFrom magrittr %>%

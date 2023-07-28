@@ -7,7 +7,7 @@
 hdImpute(data, batch, pmm_k, n_trees, seed, save)
 }
 \arguments{
-\item{data}{Original data frame (with missing values)}
+\item{data}{Original data frame or tibble (with missing values)}
 
 \item{batch}{Numeric. Batch size.}
 
@@ -36,5 +36,7 @@ seed = 123, save = FALSE)
 }
 }
 \references{
-Stekhoven, D. J., & Bühlmann, P. (2012). MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics, 28(1), 112-118.
+Waggoner, P. D. (2023). A batch process for high dimensional imputation. Computational Statistics, 1-22. doi: <10.1007/s00180-023-01325-9>
+
+Stekhoven, D. J., & Bühlmann, P. (2012). MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics, 28(1), 112-118. doi: <10.1093/bioinformatics/btr597>
 }

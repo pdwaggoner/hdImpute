@@ -1,15 +1,15 @@
 Package: hdImpute
 Type: Package
 Title: A Batch Process for High Dimensional Imputation
-Version: 0.1.1
+Version: 0.2.1
 BugReports: https://github.com/pdwaggoner/hdImpute/issues
 Authors@R: person("Philip", "Waggoner", role = c("aut", "cre"), email = "philip.waggoner@gmail.com")
 Maintainer: Philip Waggoner <philip.waggoner@gmail.com>
-Description: A correlation-based batch process for fast imputation for 
+Description: A correlation-based batch process for fast, accurate imputation for 
     high dimensional missing data problems via chained random forests.
-    See Stekhoven and Bühlmann (2012) <doi:10.1093/bioinformatics/btr597> 
-    for more on missForest, and Mayer (2022) 
-    <https://github.com/mayer79/missRanger> for more on missRanger.
+    See Waggoner (2023) <doi:10.1007/s00180-023-01325-9> for more on hdImpute,
+    Stekhoven and Bühlmann (2012) <doi:10.1093/bioinformatics/btr597> for more on missForest, 
+    and Mayer (2022) <https://github.com/mayer79/missRanger> for more on missRanger.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -21,7 +21,8 @@ Imports:
     tibble, 
     dplyr, 
     tidyselect,
-    cli
+    tidyr,
+    cli 
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
@@ -30,5 +31,6 @@ Suggests:
     missForest,
     tidyverse
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3
+URL: https://pdwaggoner.github.io/hdImpute/
