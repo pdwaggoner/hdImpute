@@ -8,6 +8,15 @@ See the detailed complementary paper (*Computational Statistics*, 2023) introduc
 
 ## Access
 
+Dev version:
+
+```{r}
+devtools::install_github("pdwaggoner/hdImpute")
+```
+
+
+Stable version on CRAN:
+
 ```{r}
 install.packages("hdImpute")
 library(hdImpute)
@@ -15,7 +24,7 @@ library(hdImpute)
 
 ## Usage
 
-`hdImpute` includes five core functions, and two helpers. The first three are to proceed by individual stages ((1) build the correlation matrix, (2) flatten and rank the matrix to give a ranked feature list, and (3) build batches, impute, and join). The fourth function (`hdImpute()`) runs all stages simultaneously, which is slightly less flexible, but much simpler. Finally, the latest release includes a fifth function to evaluate the quality of imputations by computing the mean absolute differences ("MAD scores") for each variable in the original data compared to the imputed version of the data. 
+`hdImpute` includes five core functions, and two helpers. The first three are to proceed by individual stages ((1) build the correlation matrix, (2) flatten and rank the matrix to give a ranked feature list, and (3) build batches, impute, and join). The fourth function (`hdImpute()`) runs all stages simultaneously, which is slightly less flexible, but much simpler. Finally, the latest release (v0.2.1) includes a fifth function to evaluate the quality of imputations by computing the mean absolute differences ("MAD scores") for each variable in the original data compared to the imputed version of the data. 
 
   1. `feature_cor()`: creates the correlation matrix
   
