@@ -1,26 +1,7 @@
 ---
 title: "NA Checking"
-author: "Philip Waggoner"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{NA Checking}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-
-knitr::opts_chunk$set(message = FALSE)
-knitr::opts_chunk$set(warning = FALSE)
-
-options(rmarkdown.html_vignette.check_title = FALSE)
-```
-
 
 ## Introductory Remarks 
 
