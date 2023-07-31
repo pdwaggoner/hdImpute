@@ -1,7 +1,5 @@
 ---
 title: "Getting Started"
-author: "Philip Waggoner"
-date: "`r format(Sys.time(), '%B %d, %Y')`"
 ---
 
 ## Introductory Remarks 
