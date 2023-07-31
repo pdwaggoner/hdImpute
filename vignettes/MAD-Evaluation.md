@@ -1,6 +1,5 @@
 ---
 title: "MAD Evaluation"
-date: "`r format(Sys.time(), '%B %d, %Y')`"
 ---
 
 ## Introductory Remarks 
