@@ -34,7 +34,7 @@ library(hdImpute)
 
   4. `hdImpute()`: does everything for you. At a minimum, pass the raw data object (`data`) along with specifying the batch size (`batch`) to `hdImpute()` to return a complete, imputed data set (same as you'd get from the individual stages in the above three functions).
   
-  5. `mad()`: computes variable-wise mean absolute differences (MAD) between original and imputed dataframes. Returns the MAD scores for each variable as a tibble to ensure tidy compliance and ease interaction with other Tidyverse functions (e.g., `ggplot()` for visualizing imputation error).
+  5. `mad()`: computes variable-wise mean absolute differences (MAD) between original and imputed dataframes. Returns the MAD scores for each variable as a tibble to ensure tidy compliance and easy interaction with other Tidyverse functions (e.g., `ggplot()` for visualizing imputation error).
 
 There are several vignettes with deeper dives into the package functionality, which include a few ideas for how to use the software for any imputation project.
 
