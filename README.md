@@ -10,16 +10,20 @@ See the R-Bloggers post overviewing a basic implementation of `hdImpute` in R [h
 
 See the detailed complementary paper (*Computational Statistics*, 2023) introducing `hdImpute` along with several experimental results [here](https://link.springer.com/article/10.1007/s00180-023-01325-9) (journal site) or [here](https://github.com/pdwaggoner/hdImpute/blob/main/resfiles/hdimpute_paper.pdf) (full paper)
 
+## Python
+
+A complementary version of `hdImpute` is being actively developed in Python. [Take a look here](https://github.com/pdwaggoner/hdImpute_py) and please feel free to directly contribute! 
+
 ## Access
 
-Dev version:
+Dev:
 
 ```{r}
 devtools::install_github("pdwaggoner/hdImpute")
 ```
 
 
-Stable version on CRAN:
+Stable (on CRAN):
 
 ```{r}
 install.packages("hdImpute")
